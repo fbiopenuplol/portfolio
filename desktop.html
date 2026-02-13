@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-control" content="public">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="crt.css">
+  <link rel="stylesheet" href="desktop.css">
+  <link rel="stylesheet" href="98.css">
+
+  <link href="vcr-osd-mono.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/all.min.css">
+
+
+  <script src="./」_files/jquery-3.6.0.min.js"></script><style type="text/css" id="operaUserStyle"></style>
+  <link rel="stylesheet" href="./」_files/jquery-ui.css">
+  <script src="./」_files/jquery-ui.min.js"></script>
+  <script src="./」_files/index.js"></script>
+  <script src="./」_files/audio.js"></script>
+
+  <title>「Emir」</title>
+  <meta name="theme-color" content="#000">
+
+  <meta property="og:title" content="「Emir」">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="$EMIR$">
+  <meta property="og:My portfolio website.">
+  <meta property="og:url" content="https://emir.is-a.dev/">
+  <meta property="og:image" content="../">
+  <meta name="theme-color" content="#5865F2">
+
+<body>
+  <script>
+    $(function () {
+      $(".draggable").draggable({
+        start: function () {
+          $(this).css({ transform: "none", top: $(this).offset().top + "px", left: $(this).offset().left + "px" });
+        }
+      });
+    });
+
+    function showPopup(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.style.display = 'block';
+      // don't make elements with .no-drag or data-draggable="false" draggable
+      if (!el.classList.contains('no-drag') && el.dataset.draggable !== 'false') {
+        $("#" + id).draggable({
+          start: function () {
+            $(this).css({ transform: "none", top: $(this).offset().top + "px", left: $(this).offset().left + "px" });
+          }
+        });
+      }
+    }
+
+    function hidePopup(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    function togglePopup(id) {
+      const element = document.getElementById(id);
+      if (element.style.display === 'none' || element.style.display === '') {
+        showPopup(id);
+      } else {
+        hidePopup(id);
+      }
+    }
+
+    function toggleFolder(element) {
+      const subContainer = element.nextElementSibling;
+      if (subContainer && subContainer.classList.contains('subfolder-container')) {
+        if (subContainer.style.display === 'none') {
+          subContainer.style.display = 'flex';
+          subContainer.style.flexDirection = 'column';
+        } else {
+          subContainer.style.display = 'none';
+        }
+      }
+    }
+
+    // File data storage
+    const fileData = {
+      'notes.md': '# Notes\n\nThis is a markdown file.\n\nYou can view this content but cannot edit it.',
+      'RealSportsInteractive.md': 'Real Futbol (RF) is one of my proudest projects that i have worked on, where i have been working for the anticheat alongside the main anticheat developer since a few months ago to quell cheaters and provide a better experience for the players of the game.\n\nRF is a football/soccer game on roblox with over 225 million combined visits, and it has been a great learning experience for me as a developer, as well as a great opportunity to work on a large-scale project and contribute to its success\n\ni am still volunteering with the game, and i am still working actively with the moderation team and ownership to make sure that the game maintains the popularity with a competitive atmosphere and a fun experience\n\nLINKS:\nhttps://www.roblox.com/games/14004668761/Real-Futbol\nhttps://www.roblox.com/games/70539431141054/RF-Fan-Leagues\nhttps://www.roblox.com/games/86812297381933/Real-Futsal\nhttps://www.roblox.com/games/91966141209269/Real-Futbol-League',
+      'bordr.md': 'bordr gam was a extremely popular front-page game that i used to work for for a long time as a backup scripter alongside owner Mr_Wiggles back in 2020-2024, and it was basically the game that got me into development of major games\n\nit has over 50 million visits, and you can visit it at: https://www.roblox.com/games/3411100258/bordr-gam\nP.S: Please note that I quit the game after the owner was exposed.',
+      'readme.md': '# README\n\nWelcome to My Folder!\n\nThis is a markdown file with read-only content.',
+      'commissions.md': "i take all of my commissions seriously, and i put a lot of effort into making sure that my clients are satisfied with the final product\n\nif you want to work with me, please contact me through the contact information provided in this folder\n\nif i get a short-term commission, i will make sure that your order will be delivered in a short timeframe (typically within a day or two, depending on the size of the project)\n\ni am willing to work long-term and short-term for my clients, i am also willing to maintain all of my scripts and your game/program's integrity\n\ni don't vibecode.\nthank you for considering me for your project!",
+      'about.md': 'i have been working with scripting on roblox for around 7 years, and i have pretty much mastered the functions in roblox studio, i have over 275 million contributed visits - and you can click on the subfolders in this folder to see some of my projects that i have worked on',
+      'about-me.md': "hi, i'm emir\ni'm a 18 year old bosnian student, ethical hacker, pentester and developer who loves to create and learn new things\n\ni have over 8 years of experience with development under my belt, including 7 of them exploring the functions and fundamentals of roblox studio and lua with big projects under my belt (275+ million contributed visits)\n\ni specialize in both low-level and high-level languages, such as: assembly, lua, js/ts (including libraries like next.js, react.js, discord.js, etc.), python, C++/C#, html, css and php. i'm also learning MySQL and rust! \n\nthis is my personal portfolio website where i showcase my projects and share my knowledge\n\nfeel free to explore and check out my work!",
+      'contact.md': `Contact & Accounts:\n\nEmail: hi@emir.is-a.dev (NOT WORKING)\nDiscord: @www.war.gov\nPUBLIC GitHub: https://github.com/fbiopenuplol?\nRoblox: https://www.roblox.com/users/461855937/profile`,
+      'screenshot.png': './images/girl.jpg',
+      'Simple_Lobby_System.mp4': './videos/lobby.mp4',
+      'Hangout_Game.mp4': './videos/thing.mp4',
+      'Menu.mp4': './videos/thing2.mp4',
+      'Minamiroka.mp4': './videos/Minamiroka.mp4',
+      'Venom_Cafe.mp4': './videos/VenomCafe.mp4',
+      'Northshore1.png': './images/Northshore1.png',
+      'Northshore2.png': './images/Northshore2.png',
+      'Northshore3.png': './images/Northshore3.png',
+      'Northshore4.png': './images/Northshore4.png',
+      'Northshore5.png': './images/Northshore5.png',
+      'Northshore6.png': './images/Northshore6.png',
+      'Northshore7.png': './images/Northshore7.png',
+      'Northshore8.png': './images/Northshore8.png',
+      'Northshore9.png': './images/Northshore9.png',
+      'Northshore10.png': './images/Northshore10.png',
+      'Northshore11.png': './images/Northshore11.png',
+      'Northshore12.png': './images/Northshore12.png',
+      'Northshore13.png': './images/Northshore13.png',
+      'Rockwall1.png': './images/Rockwall1.png',
+      'Rockwall2.png': './images/Rockwall2.png',
+      'Rockwall3.png': './images/Rockwall3.png',
+      'Rockwall4.png': './images/Rockwall4.png',
+      'TC1.png': './images/TC1.png',
+      'TC2.png': './images/TC2.png',
+      'TC3.png': './images/TC3.png',
+      'TC4.png': './images/TC4.png',
+      'threepoints.md': 'threepoints was a verified discord bot which was in more than 400 servers - had 100,000+ active users though my old discord account got terminated, and i lost motivation, though you can check out the website: threepoints.wuaze.com',
+      'threepoints1.png': './images/threepoints1.png',
+      'threepoints2.png': './images/threepoints2.png',
+      'threepoints3.png': './images/threepoints3.png',
+      'threepoints4.png': './images/threepoints4.png',
+      'threepoints5.png': './images/threepoints5.png',
+      'threepoints6.png': './images/threepoints6.png',
+      'threepoints7.png': './images/threepoints7.png',
+      'pc-checker.png': './images/pc-checker.png',
+      'pc-checker.md': 'my pc checker is a service that i provided to Real Futbol alongside my anticheat to detect if any competitive-level players had cheats installed on their system among similar things like hardware identification, it has over 10,000 lines of c++ code.',
+      'pentesting.md': 'There are only two of my examples that I can show publicly which i have pentested - that being:\nluaprot.net\ntackyleague.com',
+      'voicetranscriber.md': 'i have been working on a discord voice transcriber for a month now - still unreleased, though it\'s using discordjs@voice and OpenAI whisper for speech recognition.',
+      'readplease.md': 'most of my projects i CAN\'T show because they are mostly private, though i have two public projects that i can show you in this folder, i have also been working with the discord.js and discord.py library for quite some time now (if i recall correctly, for 5 years now) and you can trust me with your bot/website development.',
+      'IMPORTANT-READ-ME.md': 'NOTE: Most of my old scripting projects and commissions are lost on my old computer or old Discord account that i can\'t access anymore. I\'d recommend looking at the big projects folder.',
+    };
+
+    const folderStructure = {
+      'about': {
+        title: 'about',
+        contents: [
+          { type: 'file', name: 'about-me.md', icon: 'md-icon' },
+          { type: 'file', name: 'contact.md', icon: 'md-icon' },
+          { type: 'file', name: 'commissions.md', icon: 'md-icon' }
+        ]
+      },
+      'scripting': {
+        title: 'scripting (rblx)',
+        contents: [
+          { type: 'folder', name: "experience", items: [
+            { type: 'file', name: "about.md", icon: 'md-icon'},
+            { type: 'folder', name: 'projects', items: [
+              { type: 'folder', name: 'big projects', items: [
+                { type: 'folder', name: 'real futbol', items: [
+                  { type: 'file', name: 'RealSportsInteractive.md', icon: 'md-icon' },
+                ]},
+                { type: 'folder', name: 'bordr gam', items: [
+                  { type: 'file', name: 'bordr.md', icon: 'md-icon' },
+                ]}
+              ]},
+              { type: 'folder', name: 'smaller projects/commissions', items: [
+                { type: 'file', name: 'Simple_Lobby_System.mp4', icon: 'mp4-icon' },
+                { type: 'file', name: 'Hangout_Game.mp4', icon: 'mp4-icon' },
+                { type: 'file', name: 'Menu.mp4', icon: 'mp4-icon' },
+                { type: 'file', name: 'IMPORTANT-READ-ME.md', icon: 'md-icon' },
+              ]}
+            ]}
+          ]}
+        ]
+      },
+      'programming': {
+        title: 'programming',
+        contents: [
+          { type: 'file', name: 'readplease.md', icon: 'md-icon' }, 
+          { type: 'folder', name: 'experience', items: [
+            { type: 'file', name: 'voice-transcriber.md', icon: 'md-icon' },
+            { type: 'folder', name: 'threepoints', items: [
+              { type: 'file', name: 'threepoints.md', icon: 'md-icon' },
+              { type: 'file', name: 'threepoints1.png', icon: 'png-icon' },
+              { type: 'file', name: 'threepoints2.png', icon: 'png-icon' },
+              { type: 'file', name: 'threepoints3.png', icon: 'png-icon' },
+              { type: 'file', name: 'threepoints4.png', icon: 'png-icon' },
+              { type: 'file', name: 'threepoints5.png', icon: 'png-icon' },
+              { type: 'file', name: 'threepoints6.png', icon: 'png-icon' },
+              { type: 'file', name: 'threepoints7.png', icon: 'png-icon' },
+            ]},
+            { type: 'folder', name: 'other', items: [
+              { type: 'file', name: 'pc-checker.png', icon: 'png-icon' }, 
+              { type: 'file', name: 'pc-checker.md', icon: 'md-icon' }, 
+            ]},
+            { type: 'folder', name: 'pentesting', items: [
+              { type: 'file', name: 'pentesting.md', icon: 'md-icon' },
+            ]},
+          ]}  
+        ]
+      },
+      'building': {
+        title: 'building (rblx)',
+        contents: [
+          { type: 'file', name: 'Minamiroka.mp4', icon: 'mp4-icon' },
+          { type: 'file', name: 'Venom_Cafe.mp4', icon: 'mp4-icon' },
+          { type: 'file', name: 'Northshore1.png', icon: 'png-icon' },
+          { type: 'file', name: 'Northshore2.png', icon: 'png-icon' },
+          { type: 'file', name: 'Northshore3.png', icon: 'png-icon' },
+          { type: 'file', name: 'Northshore4.png', icon: 'png-icon' },
+          { type: 'file', name: 'Northshore5.png', icon: 'png-icon' },
+          { type: 'file', name: 'Northshore6.png', icon: 'png-icon' },
+          { type: 'file', name: 'Northshore7.png', icon: 'png-icon' },
+          { type: 'file', name: 'Northshore8.png', icon: 'png-icon' },
+          { type: 'file', name: 'Northshore9.png', icon: 'png-icon' },
+          { type: 'file', name: 'Northshore10.png', icon: 'png-icon' },
+          { type: 'file', name: 'Northshore11.png', icon: 'png-icon' },
+          { type: 'file', name: 'Northshore12.png', icon: 'png-icon' },
+          { type: 'file', name: 'Northshore13.png', icon: 'png-icon' },
+          { type: 'file', name: 'Rockwall1.png', icon: 'png-icon' },
+          { type: 'file', name: 'Rockwall2.png', icon: 'png-icon' },
+          { type: 'file', name: 'Rockwall3.png', icon: 'png-icon' },
+          { type: 'file', name: 'Rockwall4.png', icon: 'png-icon' },
+          { type: 'file', name: 'TC1.png', icon: 'png-icon' },
+          { type: 'file', name: 'TC2.png', icon: 'png-icon' },
+          { type: 'file', name: 'TC3.png', icon: 'png-icon' },
+          { type: 'file', name: 'TC4.png', icon: 'png-icon' },
+        ]
+      }
+    };
+
+    // Open folder window with specific folder content
+    function renderFolderItems(items, parentDiv, depth = 0) {
+      items.forEach(item => {
+        if (item.type === 'folder') {
+          const folderDiv = document.createElement('div');
+          folderDiv.className = 'folder-item';
+          folderDiv.style.marginLeft = (depth * 20) + 'px';
+          folderDiv.onclick = function(e) {
+            e.stopPropagation();
+            toggleFolder(this);
+          };
+          
+          folderDiv.innerHTML = `
+            <span class="folder-icon"></span>
+            <span class="folder-name">${item.name}</span>
+          `;
+          parentDiv.appendChild(folderDiv);
+
+          if (item.items && item.items.length > 0) {
+            const subContainer = document.createElement('div');
+            subContainer.className = 'subfolder-container';
+            subContainer.style.display = 'none';
+            parentDiv.appendChild(subContainer);
+            
+            renderFolderItems(item.items, subContainer, depth + 1);
+            
+            folderDiv.dataset.subContainer = parentDiv.childNodes.length - 1;
+          }
+        } else if (item.type === 'file') {
+          const fileDiv = document.createElement('div');
+          fileDiv.className = 'file-item';
+          fileDiv.style.marginLeft = (depth * 20) + 'px';
+          fileDiv.innerHTML = `
+            <span class="file-icon ${item.icon}"></span>
+            <span class="file-name">${item.name}</span>
+          `;
+          fileDiv.addEventListener('dblclick', function() {
+            openFile(item.name);
+          });
+          parentDiv.appendChild(fileDiv);
+        }
+      });
+    }
+
+    function openFolderWindow(folderName) {
+      const folder = folderStructure[folderName];
+      if (!folder) return;
+
+      const folderId = 'folder_' + folderName;
+      
+      document.getElementById('folderTitle').textContent = folder.title;
+      const contentsDiv = document.getElementById('folderContents');
+      contentsDiv.innerHTML = '';
+
+      renderFolderItems(folder.contents, contentsDiv);
+
+      showPopup('FolderWindow');
+      addToTaskbar(folderId, folder.title);
+    }
+
+    // Taskbar management
+    let openWindows = {};
+
+    function closeFolderWindow() {
+      const currentTitle = document.getElementById('folderTitle').textContent;
+      const folderId = 'folder_' + Object.keys(folderStructure).find(key => folderStructure[key].title === currentTitle);
+      hidePopup('FolderWindow');
+      removeFromTaskbar(folderId);
+    }
+
+    function addToTaskbar(windowId, label) {
+      // Determine file type from label
+      let fileType = 'folder';
+      if (label.endsWith('.md')) {
+        fileType = 'md';
+      } else if (label.endsWith('.png')) {
+        fileType = 'png';
+      }
+      
+      openWindows[windowId] = { label: label, type: fileType };
+      updateTaskbar();
+    }
+
+    function removeFromTaskbar(windowId) {
+      delete openWindows[windowId];
+      updateTaskbar();
+    }
+
+    function updateTaskbar() {
+      const taskbar = document.getElementById('taskbar');
+      taskbar.innerHTML = '';
+
+      for (const [windowId, data] of Object.entries(openWindows)) {
+        const item = document.createElement('div');
+        item.className = 'taskbar-item';
+        
+        // Create icon span based on file type
+        let iconClass = 'taskbar-icon';
+        if (data.type === 'md') {
+          iconClass += ' md-icon';
+        } else if (data.type === 'png') {
+          iconClass += ' png-icon';
+        }
+         else if (data.type === 'mp4') {
+          iconClass += ' mp4-icon';
+        }
+         else if (data.type === 'folder') {
+          iconClass += ' folder-icon';
+        }
+        
+        const iconSpan = document.createElement('span');
+        iconSpan.className = iconClass;
+        item.appendChild(iconSpan);
+        
+        const labelSpan = document.createElement('span');
+        labelSpan.className = 'taskbar-label';
+        labelSpan.textContent = data.label;
+        item.appendChild(labelSpan);
+        
+        item.onclick = function() {
+          const window = document.getElementById(windowId);
+          if (window) {
+            if (window.style.display === 'none') {
+              window.style.display = 'block';
+            } else {
+              window.style.display = 'none';
+            }
+          }
+        };
+        taskbar.appendChild(item);
+      }
+    }
+
+    function openFile(filename) {
+      const isMarkdownFile = filename.endsWith('.md');
+      const isImageFile = filename.endsWith('.png');
+      const isVideoFile = filename.endsWith('.mp4');
+      
+      const windowId = 'file_' + filename.replace(/[^a-zA-Z0-9]/g, '_');
+      
+      // Remove existing window if it exists
+      const existingWindow = document.getElementById(windowId);
+      if (existingWindow) {
+        existingWindow.style.display = 'block';
+        addToTaskbar(windowId, filename);
+        return;
+      }
+      
+      const fileWindow = document.createElement('div');
+      fileWindow.id = windowId;
+      fileWindow.className = 'window draggable ui-draggable ui-draggable-handle file-window';
+      fileWindow.style.cssText = 'width: 500px; height: auto; display: block; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);';
+      
+      let contentHTML = '';
+      
+      if (isMarkdownFile) {
+        const content = (fileData[filename] || '').replace(/\n/g, '<br>');
+        contentHTML = `
+          <div class="title-bar">
+            <div class="title-bar-text">${filename}</div>
+            <div class="title-bar-controls">
+              <button aria-label="Close" onclick="closeFileWindow('${windowId}')"></button>
+            </div>
+          </div>
+          <div class="window-body file-content-md">
+            <div style="padding: 10px; font-family: 'Courier New', monospace; font-size: 11px; color: black; white-space: pre-wrap; word-wrap: break-word;">${content}</div>
+          </div>
+          <div class="window-actions">
+            <button onclick="closeFileWindow('${windowId}')">Close</button>
+          </div>
+        `;
+      } else if (isImageFile) {
+        contentHTML = `
+          <div class="title-bar">
+            <div class="title-bar-text">${filename}</div>
+            <div class="title-bar-controls">
+              <button aria-label="Close" onclick="closeFileWindow('${windowId}')"></button>
+            </div>
+          </div>
+          <div class="window-body file-content-image">
+            <div style="text-align: center; padding: 20px;">
+              <img src="${fileData[filename]}" style="max-width: 400px; max-height: 350px; border: 1px solid #dfdfdf;">
+            </div>
+          </div>
+          <div class="window-actions">
+            <button onclick="closeFileWindow('${windowId}')">Close</button>
+          </div>
+        `;
+      } else if (isVideoFile) {
+          contentHTML = `
+            <div class="title-bar">
+              <div class="title-bar-text">${filename}</div>
+              <div class="title-bar-controls">
+                <button aria-label="Close" onclick="closeFileWindow('${windowId}')"></button>
+              </div>
+            </div>
+            <div class="window-body file-content-video">
+              <div style="text-align: center; padding: 10px;">
+                <video controls style="max-width: 450px; max-height: 350px;">
+                  <source src="${fileData[filename]}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+            <div class="window-actions">
+              <button onclick="closeFileWindow('${windowId}')">Close</button>
+            </div>
+          `;
+        }
+              
+      fileWindow.innerHTML = contentHTML;
+      document.body.appendChild(fileWindow);
+      
+      // Make draggable
+      $("#" + windowId).draggable({
+        start: function () {
+          $(this).css({ transform: "none", top: $(this).offset().top + "px", left: $(this).offset().left + "px" });
+        }
+      });
+      
+      addToTaskbar(windowId, filename);
+    }
+
+    function closeFileWindow(windowId) {
+      document.getElementById(windowId).style.display = 'none';
+      removeFromTaskbar(windowId);
+    }
+
+    // Start menu functions
+    function toggleStartMenu(event) {
+      if (event) {
+        event.stopPropagation();
+      }
+      const startMenu = document.getElementById('startMenu');
+      const isVisible = startMenu.style.display === 'block';
+      startMenu.style.display = isVisible ? 'none' : 'block';
+    }
+
+    function closeStartMenu() {
+      document.getElementById('startMenu').style.display = 'none';
+    }
+
+    function togglePowerMenu(event) {
+      if (event) {
+        event.stopPropagation();
+      }
+      const powerMenu = document.getElementById('powerMenu');
+      const isVisible = powerMenu.style.display === 'block';
+      powerMenu.style.display = isVisible ? 'none' : 'block';
+    }
+
+    // Close menus when clicking outside
+    document.addEventListener('click', function(event) {
+      const startMenu = document.getElementById('startMenu');
+      const powerMenu = document.getElementById('powerMenu');
+      const startButton = document.querySelector('.start-button');
+      const startMenuElement = document.querySelector('.start-menu');
+      const powerMenuElement = document.querySelector('.power-menu');
+      const powerButton = document.querySelector('.power-button');
+      
+      // Check if click is outside start menu
+      if (startMenu && startMenu.style.display === 'block') {
+        if (startButton && !startButton.contains(event.target) && 
+            startMenuElement && !startMenuElement.contains(event.target) && 
+            powerMenuElement && !powerMenuElement.contains(event.target) &&
+            powerButton && !powerButton.contains(event.target)) {
+          startMenu.style.display = 'none';
+        }
+      }
+      
+      // Check if click is outside power menu
+      if (powerMenu && powerMenu.style.display === 'block') {
+        if (powerMenuElement && !powerMenuElement.contains(event.target) && 
+            powerButton && !powerButton.contains(event.target)) {
+          powerMenu.style.display = 'none';
+        }
+      }
+    });
+
+    function signOut() {
+      // Go to login screen
+      document.getElementById('main').style.display = 'none';
+      document.getElementById('enter').style.display = 'block';
+      closeStartMenu();
+    }
+
+    function shutdown() {
+      // Go to google.com
+      window.location.href = 'https://www.google.com';
+    }
+
+    function restart() {
+      // Go to loading screen (thing.html)
+      window.location.href = 'thing.html';
+    }
+
+    // Add double-click handlers to files
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        document.querySelectorAll('.file-item, .subfolder').forEach(item => {
+          const fileName = item.querySelector('.file-name, .folder-name').textContent;
+          if (fileName.endsWith('.md') || fileName.endsWith('.png')) {
+            item.style.cursor = 'pointer';
+            item.addEventListener('dblclick', function() {
+              openFile(fileName);
+            });
+          }
+        });
+      }, 100);
+    });
+  </script>
+  <div id="enter">
+    <div class="window enter-screen">
+      <div class="title-bar">
+        <div class="title-bar-text">User Login</div>
+        <div class="title-bar-controls">
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-wrapper">
+        <div class="window-content">
+          <form>
+            <fieldset>
+              <legend>Login</legend>
+
+
+              <p>Select a user to login to</p>
+              <select name="wallpaper" size="1">
+                <option>Emir</option>
+              </select>
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="window-actions">
+          <button class="window-action-button main">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="main">
+    <div id="desktop">
+      <br><br>
+      <center>
+        <h4 style="color: #fff">EMIR.IS-A.DEV</h4>
+        <h4 style="color: #fff; top: 70px !important; font-size: 0.5em !important" id="mobile-notice"></h4>
+      </center>
+
+      <div class="desktop-icons-container">
+        <div class="desktop-icons">
+          <div class="desktop-icon folder-icon" onclick="openFolderWindow('about')" title="About">
+            about
+          </div>
+          <div class="desktop-icon folder-icon" onclick="openFolderWindow('scripting')" title="Scripting">
+            scripting (rblx)
+          </div>
+          <div class="desktop-icon folder-icon" onclick="openFolderWindow('building')" title="Building">
+            building (rblx)
+          </div>
+          <div class="desktop-icon folder-icon" onclick="openFolderWindow('programming')" title="Programming">
+            programming
+          </div>
+        
+      <div id="toolbar">
+        <div class="toolbar-start-menu">
+          <button class="start-button" onclick="toggleStartMenu()">
+            Start
+          </button>
+          <div class="start-menu" id="startMenu" style="display: none;">
+            <div class="start-menu-item" onclick="openFolderWindow('about'); closeStartMenu();">
+              <span class="start-menu-icon folder-icon-small"></span>
+              <span>about</span>
+            </div>
+            <div class="start-menu-item" onclick="openFolderWindow('scripting'); closeStartMenu();">
+              <span class="start-menu-icon folder-icon-small"></span>
+              <span>scripting (rblx)</span>
+            </div>
+            <div class="start-menu-item" onclick="openFolderWindow('building'); closeStartMenu();">
+              <span class="start-menu-icon folder-icon-small"></span>
+              <span>building (rblx)</span>
+            </div>
+            <div class="start-menu-item" onclick="openFolderWindow('programming'); closeStartMenu();">
+              <span class="start-menu-icon folder-icon-small"></span>
+              <span>programming</span>
+            </div>
+            <div class="start-menu-bottom">
+              <button class="power-button" onclick="togglePowerMenu();" title="Shutdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18.36 6.64a9 9 0 1 1-12.73 0" stroke-linecap="round" stroke-linejoin="round"/>
+                  <line x1="12" y1="2" x2="12" y2="12" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="toolbar-left">
+
+        </div>
+
+        <audio id="audio" preload="none" tabindex="0" src="https://emir.is-a.dev/songs/audio.mp3">
+          <source src="songs/audio.mp3" data-track-number="1">
+
+        </audio>
+
+        <ul id="trackList" style="display: none;">
+          <li data-track-number="1">Pjevam danju pjevam noću - Zdravko Čolić</li>
+        </ul>
+
+        <div class="window volume no-drag" id="volume" style="position: fixed; width: 200px; display: none;">
+          <div class="title-bar">
+            <div class="title-bar-text">Volume</div>
+          </div>
+          <div class="window-body">
+            <p> Currently playing:</p>
+            <ul id="songInfo">
+              <li id="songTitle">Let's Pretend? - DC The Don</li>
+              <li id="songTime">0:00</li>
+              <li><input id="range26" type="range" min="0" max="50" value="50"></li>
+            </ul>
+          </div>
+          <div class="status-bar">
+            <button id="playPause" class="status-bar-field" aria-label="Play/Pause">
+              <svg id="playIcon" width="14" height="14" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M8 5v14l11-7z" fill="currentColor" />
+              </svg>
+              <svg id="stopIcon" width="14" height="14" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:none;">
+                <rect x="6" y="6" width="12" height="12" fill="currentColor"></rect>
+              </svg>
+            </button>
+          </div>
+
+        </div>
+
+        <div class="window draggable ui-draggable ui-draggable-handle" id="FolderWindow" style="margin: 32px; width: 600px; height: 450px; display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+          <div class="title-bar">
+            <div class="title-bar-text" id="folderTitle">Folder</div>
+            <div class="title-bar-controls">
+              <button class="FolderClose" aria-label="Close" onclick="closeFolderWindow()"></button>
+            </div>
+          </div>
+          <div class="window-body folder-contents-window" id="folderContents">
+          </div>
+        </div>
+
+        <div class="toolbar-separator"></div>
+        <div class="taskbar" id="taskbar">
+        </div>
+        <div class="toolbar-separator"></div>
+        <div class="power-menu" id="powerMenu" style="display: none;">
+          <div class="power-menu-item" onclick="signOut();">Sign Out</div>
+          <div class="power-menu-item" onclick="shutdown();">Shut Down</div>
+          <div class="power-menu-item" onclick="restart();">Restart</div>
+        </div>
+        <div class="toolbar-right field-row">
+          <img src="./」_files/sound.png" alt="Tab" onclick="togglePopup(&#39;volume&#39;)" height="24" width="">
+          <div class="time">4:26 PM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+
+  <script defer="" src="./」_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;168b0d830471493b9e455c6121e78a1a&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous" style="display: none !important;"></script>
+
+
+</body></html>
